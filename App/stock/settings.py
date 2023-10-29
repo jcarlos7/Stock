@@ -130,4 +130,4 @@ AUTH_USER_MODEL = 'usuarios.Users'
 
 # Role permissions
 
-ROLESPERMISSIONS_MODULE = 'stock.roles'
+ROLEPERMISSIONS_MODULE = 'stock.roles'
