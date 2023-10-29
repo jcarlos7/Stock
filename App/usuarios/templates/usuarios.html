@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block 'body' %}
+    <div class="container">
+        <form action="{% url 'cadastrar_usuario' %}" method="POST">{% csrf_token %}
+            <br>
+            <label>Email</label>
+            <input type="email" placeholder="Digite seu email" name="Email" class="from-control">
+
+            <br>
+            <label>Email</label>
+            <input type="password" placeholder="Digite uma senha" name="Senha" class="from-control">
+
+            <br>
+            <input type="submit" class="btn btn-success">
+        </form>
+    </div>
+{% endblock %}
