@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from rolepermissions.decorators import has_permission_decorator
 from .models import Users
+from home.views import home
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib import auth
@@ -28,7 +29,7 @@ def cadastrar_usuario(request):
 def login(request):
     if request.method == "GET":
         if request.user.is_authenticated:
-            return redirect(reverse('plataforma'))
+            return redirect(reverse('login'))
         return render(request, 'login.html')
     elif request.method == "POST":
         login = request.POST.get('email')
@@ -41,7 +42,8 @@ def login(request):
             return HttpResponse('Usuario inválido')
         
         auth.login(request, user)
-        return HttpResponse('Usuário logado com sucesso!')
+        # return HttpResponse('Usuário logado com sucesso!')
+        return render(request, 'home.html')
     
 def logout(request):
     request.session.flush()
